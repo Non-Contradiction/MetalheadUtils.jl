@@ -17,10 +17,10 @@ jobs:
       matrix:
         julia-version: ['1.0', '1', 'nightly']
         os: [ubuntu-latest, windows-latest]
-      exclude:
-      # excludes 1.0 on windows
-      - os: windows-latest
-        julia-version: '1.0'
+        exclude:
+        # excludes 1.0 on windows
+        - os: windows-latest
+          julia-version: '1.0'
 
     steps:
       - uses: actions/checkout@v2
