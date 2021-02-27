@@ -15,5 +15,6 @@ image_urls = ["https://upload.wikimedia.org/wikipedia/commons/d/d7/Green_Sea_Tur
 
     img1 = postprocess(Metalhead.preprocess(images[1]))
     @test img1 isa Array{RGB{FixedPointNumbers.Normed{UInt8,8}},2}
-    @test img1 == impreprocess(images[1])
+    r = img1 - impreprocess(images[1])
+    @test maximum(abs.(channelview(r))) <= 1/500
 end

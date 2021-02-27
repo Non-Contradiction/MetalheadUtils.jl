@@ -32,7 +32,7 @@ function impreprocess(im)
     # Resize such that smallest edge is 256 pixels long
     im = Metalhead.resize_smallest_dimension(im, 256)
     # Center-crop to 224x224
-    im = center_crop(im, 224)
+    im = Metalhead.center_crop(im, 224)
     im
 end
 
