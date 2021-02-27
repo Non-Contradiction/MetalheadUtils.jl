@@ -1,0 +1,13 @@
+name = "MetalheadUtils"
+uuid = "b4910867-81e6-4827-8ca3-783fc9e43ade"
+authors = ["lch34677 <lch34677@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
