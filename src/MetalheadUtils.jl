@@ -1,6 +1,6 @@
 module MetalheadUtils
 
-using Images
+using Images, Metalhead
 
 export imgFromURL, postprocess, normalize!
 

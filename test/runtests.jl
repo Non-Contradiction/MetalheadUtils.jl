@@ -1,6 +1,6 @@
 using MetalheadUtils
 using Test
-using Metalhead
+using Images, Metalhead
 
 image_urls = ["https://upload.wikimedia.org/wikipedia/commons/d/d7/Green_Sea_Turtle_grazing_seagrass.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg",
 "https://upload.wikimedia.org/wikipedia/commons/b/b4/Vassily_Kandinsky%2C_1913_-_Composition_7.jpg",
@@ -11,5 +11,5 @@ image_urls = ["https://upload.wikimedia.org/wikipedia/commons/d/d7/Green_Sea_Tur
 @testset "MetalheadUtils.jl" begin
     images = imgFromURL.(image_urls)
     @test length(images) == length(image_urls)
-    
+    @test images[1] isa Array{RGB{FixedPointNumbers.Normed{UInt8,8}},2}
 end
