@@ -3,7 +3,6 @@ module MetalheadUtils
 using Images
 
 export imgFromURL, postprocess, normalize!
-# Write your package code here.
 
 function imgFromURL(url)
 	mktemp() do fn,f
