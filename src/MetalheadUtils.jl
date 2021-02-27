@@ -1,9 +1,11 @@
 module MetalheadUtils
 
-using Images, Metalhead
+using Images, Metalhead, Flux
 
-export imgFromURL, postprocess, normalize!
-export impreprocess
+export imgFromURL, normalize!
+export postprocess, impreprocess, vggBlockLen
+export Features
+
 
 function imgFromURL(url)
 	mktemp() do fn,f
@@ -36,6 +38,12 @@ function impreprocess(im)
     im
 end
 
+const vggBlockLen = [3, 3, 5, 5, 5]
 
+function Features(chain::Chain, X, layernums)
+	[chain[1:k](X) for k in layernums]
+end	
 
+function Features(nn, X, layernums)
+	Features(nn.layers, X, layernums)
 end

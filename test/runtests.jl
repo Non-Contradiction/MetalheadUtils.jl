@@ -18,3 +18,14 @@ image_urls = ["https://upload.wikimedia.org/wikipedia/commons/d/d7/Green_Sea_Tur
     r = img1 - impreprocess(images[1])
     @test maximum(abs.(channelview(r))) <= 1/500
 end
+
+using Flux
+@testset "Features" begin
+    r = Chain(x->x+1, x->x+2)
+    @test Features(r, 20, [1]) == [21]
+    @test Features(r, 20, [1,2]) == [21,23]
+
+    vgg = VGG19()
+    img1 = Metalhead.preprocess(imgFromURL(image_urls[1]))
+    @test Features(vgg, img1, [1,2]) == [Features(vgg, img1, [1])[1], Features(vgg, img1, [2])[1]]
+end
